@@ -37,3 +37,9 @@ for (let i = 0; i < participantes.length; i++) {
 
     
 }
+// Función para agregar participante al presionar la tecla "Enter"
+document.getElementById("amigo").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") { // Se verifica si la tecla presionada es "Enter"
+        agregarAmigo(); // Se llama a la función para agregar el participante
+    }
+});
