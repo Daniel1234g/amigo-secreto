@@ -43,3 +43,14 @@ document.getElementById("amigo").addEventListener("keypress", function (event) {
         agregarAmigo(); // Se llama a la función para agregar el participante
     }
 });
+
+//Se crea la funcion para sortear amigo
+function sortearAmigo() {
+    if (participantes.length<3){ //se compara la lista de amigos agregada con minimo 3 para poder realizar el sorteo
+        alert("Debes tener al menos 3 amigos para sortear");//se alerta si son menos de 3
+        return;
+    }
+    let copia= participantes.slice(); //se realiza una copia de la lista para no afectar la lista original
+    let resultado={};// se guardara los amigos sorteados
+   
+}
