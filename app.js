@@ -25,6 +25,15 @@ function agregarAmigo() {
 function mostrarLista() {
 //declarando la variable de "lista" y obteniendo lo de la lista mostrada en pantalla mediante el id
 let lista = document.getElementById("listaAmigos");
+//Se utiliza el método innerHTML para mostrar los nombres de los participantes en la lista
+lista.innerHTML = "";
+//Se utiliza un for para recorrer la lista de participantes y mostrarlos en pantalla
+for (let i = 0; i < participantes.length; i++) {
+    let item = document.createElement("li");
+    item.textContent = participantes[i];
+    lista.appendChild(item);
+    }
+    
 
     
 }
