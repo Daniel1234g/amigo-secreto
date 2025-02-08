@@ -2,7 +2,7 @@
 //Primero se declara la lista donde se guardaran los participantes
 let participantes = [];
 // Se realiza la funcion que permite agregar los participantes a la lista
-function agregarParticipantes() {
+function agregarAmigo() {
     // Se obtiene el nombre del participante mediante el input
     let nombre = document.getElementById("amigo").value;
 
@@ -14,9 +14,17 @@ function agregarParticipantes() {
     } else {
         participantes.push(nombre); // Se agrega el nombre a la lista
         
-        mostrarLista(); // Se actualiza la lista en la pantalla
+        mostrarLista() // Se actualiza la lista en la pantalla
     }
 
     // Se limpia el input después de agregar el nombre
     document.getElementById("amigo").value = "";
+}
+
+//Funcion para mostrar lista de amigos en pantalla
+function mostrarLista() {
+//declarando la variable de "lista" y obteniendo lo de la lista mostrada en pantalla mediante el id
+let lista = document.getElementById("listaAmigos");
+
+    
 }
