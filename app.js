@@ -53,4 +53,34 @@ function sortearAmigo() {
     let copia= participantes.slice(); //se realiza una copia de la lista para no afectar la lista original
     let resultado={};// se guardara los amigos sorteados
    
+    for(let i=0;i<participantes.length;i++){ //Se emplea un ciclo for para recorrer toda la lista de participantes
+        let persona=participantes[i]; //Representa el nombre del participante actual
+        let indiceAleatorio=Math.floor(Math.random()*copia.length);// Se genera un numero para obtener la posicion de la lista
+
+        while(copia[indiceAleatorio]===persona){//Si el nombre es el mismo que la persona, se elige otro
+            indiceAleatorio=Math.floor(Math.random()*copia.length);
+        }
+        resultado[persona]=copia[indiceAleatorio];//Se guarda el amigo secreto en la variable resultado
+        copia.splice(indiceAleatorio,1); //Elimina el nombre resultante de la lista copia
+    }
+    mostrarSorteo(resultado);//se muestra lista de resultado
+    limpiarCaja();//Se limpia la lista mostrada de los amigos
 }
+
+//Se crea la funcion para mostrar el resultado del sorteo
+function mostrarSorteo(resultado) {
+    let listaResultado=document.getElementById("resultado");//Se extrae el resultado de la lista mostrada
+    listaResultado.innerHTML=""; //Se limpia la lista para evitar duplicados
+    for(let clave in resultado){ //Se usa un ciclo for para recorrer la lista
+        let item=document.createElement("li"); //Se crea un <li> para cada participante
+        item.textContent=clave+" es el amigo secreto de "+resultado[clave]; //Se muestra el nombre del participante y el amigo secreto 
+        listaResultado.appendChild(item); //Se inserta en una lista
+    }
+    
+}
+    
+    
+function limpiarCaja() {
+        document.getElementById("listaAmigos").innerHTML = " "; // Limpia la lista de participantes
+        participantes = []; // Vacía el array de participantes
+    }
