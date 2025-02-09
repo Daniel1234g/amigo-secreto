@@ -46,26 +46,34 @@ document.getElementById("amigo").addEventListener("keypress", function (event) {
 
 //Se crea la funcion para sortear amigo
 function sortearAmigo() {
-    if (participantes.length<3){ //se compara la lista de amigos agregada con minimo 3 para poder realizar el sorteo
-        alert("Debes tener al menos 3 amigos para sortear");//se alerta si son menos de 3
+    if (participantes.length < 3) { 
+        alert("Debes tener al menos 3 amigos para sortear.");
         return;
     }
-    let copia= participantes.slice(); //se realiza una copia de la lista para no afectar la lista original
-    let resultado={};// se guardara los amigos sorteados
-   
-    for(let i=0;i<participantes.length;i++){ //Se emplea un ciclo for para recorrer toda la lista de participantes
-        let persona=participantes[i]; //Representa el nombre del participante actual
-        let indiceAleatorio=Math.floor(Math.random()*copia.length);// Se genera un numero para obtener la posicion de la lista
 
-        while(copia[indiceAleatorio]===persona){//Si el nombre es el mismo que la persona, se elige otro
-            indiceAleatorio=Math.floor(Math.random()*copia.length);
-        }
-        resultado[persona]=copia[indiceAleatorio];//Se guarda el amigo secreto en la variable resultado
-        copia.splice(indiceAleatorio,1); //Elimina el nombre resultante de la lista copia
+    // Hacer una copia de la lista de participantes
+    let copia = participantes.slice(); 
+
+    // Escoger una persona aleatoria
+    let persona = copia[Math.floor(Math.random() * copia.length)]; 
+    
+    let indiceAleatorio = Math.floor(Math.random() * copia.length); 
+
+    // Asegurar que la persona no se asigne a sí misma
+    while (copia[indiceAleatorio] === persona) {
+        indiceAleatorio = Math.floor(Math.random() * copia.length);
     }
-    mostrarSorteo(resultado);//se muestra lista de resultado
-    limpiarCaja();//Se limpia la lista mostrada de los amigos
+
+    let amigoSecreto = copia[indiceAleatorio]; // Selecciona el amigo secreto
+
+    let resultado = {}; // Crea un objeto para guardar el resultado
+    resultado[persona] = amigoSecreto; // Guarda la pareja
+
+    mostrarSorteo(resultado); // Muestra el resultado en pantalla
+
+    limpiarCaja(); // Limpia la lista después del sorteo
 }
+
 
 //Se crea la funcion para mostrar el resultado del sorteo
 function mostrarSorteo(resultado) {
